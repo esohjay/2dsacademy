@@ -14,7 +14,7 @@ function Delivery() {
     setShowDeliveryModal(false);
   };
   return (
-    <section className=" py-12">
+    <section className=" py-12 px-3">
       <h3 className="text-mainColor text-center font-bold text-3xl capitalize mb-3">
         program delivery
       </h3>

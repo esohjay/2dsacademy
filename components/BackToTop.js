@@ -19,7 +19,7 @@ function BackToTop({ link }) {
   return (
     <>
       {showBtpBtn && (
-        <Link href={link}>
+        <Link href={link} passHref>
           <button
             className={`rounded-full  p-1 mx-2 md:mx-3 bg-altColor bg-opacity-70  text-white  
         hover:bg-mainColor fixed z-[56] bottom-3 right-3 animate-modalFadeIn`}
