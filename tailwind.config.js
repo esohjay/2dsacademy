@@ -51,6 +51,16 @@ module.exports = {
             transform: "translate(-40px,72px) rotate(144deg)",
           },
         },
+        modalFadeIn: {
+          "0%": {
+            opacity: 0,
+            transform: "translateY(-20px)",
+          },
+          "100%": {
+            opacity: 1,
+            transform: " translateY(0)",
+          },
+        },
       },
       animation: {
         moveFirst: "moveAround 25s infinite linear",
@@ -59,8 +69,9 @@ module.exports = {
         moveFourth: "moveAround 30s infinite linear",
         moveFifth: "moveAround 15s infinite linear",
         moveSixth: "moveAround 35s infinite linear",
+        modalFadeIn: "1000ms ease-in-out 0s normal none 1 running fadeInDown",
       },
     },
   },
-  plugins: [],
+  plugins: [require("tailwind-scrollbar")],
 };

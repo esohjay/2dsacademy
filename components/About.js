@@ -7,7 +7,7 @@ import blob1 from "../public/images/blob1.svg";
 
 export const About = () => {
   return (
-    <section className="relative w-11/12 my-20 mx-auto max-w-lg">
+    <section className="relative w-11/12 my-20 mx-auto max-w-lg" id="about">
       <figure className="absolute top-[-70px] left-[-70px] z-0 opacity-70">
         <Image
           src={blob1}

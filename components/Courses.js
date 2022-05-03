@@ -1,10 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import { FaLaptopCode, FaServer, FaCode } from "react-icons/fa";
+import Modal from "./Modal";
+
+import { courseDetails } from "../utils/data";
+import CourseDetails from "./CourseDetails";
 
 function Courses() {
+  const [showFullstackModal, setShowFullstackModal] = useState(false);
+  const [showFrontendModal, setShowFrontendModal] = useState(false);
+  const [showBackendModal, setShowBackendModal] = useState(false);
+  const closeFullstackModal = () => {
+    setShowFullstackModal(false);
+  };
+  const closeFrontendModal = () => {
+    setShowFrontendModal(false);
+  };
+  const closeBackendModal = () => {
+    setShowBackendModal(false);
+  };
   return (
-    <article className="bg-white py-12">
+    <article className="bg-white py-12" id="courses">
       <h3 className="text-altColor text-center text-lg uppercase mb-5">
         Increase your skill
       </h3>
@@ -36,12 +52,18 @@ function Courses() {
           </p>
           <Link href="#enroll">
             <a
-              className="font-bold capitalize text-md mt-5 block  text-altColor 
+              className="font-bold capitalize text-md mt-5 block text-altColor 
               hover:underline transition-all duration-700"
+              onClick={() => setShowFullstackModal(true)}
             >
               learn more
             </a>
           </Link>
+          <Modal
+            close={closeFullstackModal}
+            show={showFullstackModal}
+            content={<CourseDetails data={courseDetails[0]} />}
+          />
         </div>
         {/* End of Single Card */}
         {/* Single Card */}
@@ -66,12 +88,18 @@ function Courses() {
           </p>
           <Link href="#enroll">
             <a
-              className="font-bold capitalize text-md mt-5 block  text-altColor 
+              className="font-bold capitalize text-md mt-5 block text-altColor 
               hover:underline transition-all duration-700"
+              onClick={() => setShowFrontendModal(true)}
             >
               learn more
             </a>
           </Link>
+          <Modal
+            close={closeFrontendModal}
+            show={showFrontendModal}
+            content={<CourseDetails data={courseDetails[1]} />}
+          />
         </div>
         {/* End of Single Card */}
         {/* Single Card */}
@@ -96,12 +124,18 @@ function Courses() {
           </p>
           <Link href="#enroll">
             <a
-              className="font-bold capitalize text-md mt-5 block  text-altColor 
+              className="font-bold capitalize text-md mt-5 block text-altColor 
               hover:underline transition-all duration-700"
+              onClick={() => setShowBackendModal(true)}
             >
               learn more
             </a>
           </Link>
+          <Modal
+            close={closeBackendModal}
+            show={showBackendModal}
+            content={<CourseDetails data={courseDetails[2]} />}
+          />
         </div>
         {/* End of Single Card */}
       </div>

@@ -1,14 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
+
+import Modal from "./Modal";
+import Enroll from "./Enroll";
 
 import Presentation from "../public/images/Presentation2.png";
 import Pair from "../public/images/Pair.svg";
 import Virtual from "../public/images/Virtual.png";
 
 function Delivery() {
+  const [showDeliveryModal, setShowDeliveryModal] = useState(false);
+  const closeDeliveryModal = () => {
+    setShowDeliveryModal(false);
+  };
   return (
-    <section className=" py-12 text-center">
+    <section className=" py-12">
       <h3 className="text-mainColor text-center font-bold text-3xl capitalize mb-3">
         program delivery
       </h3>
@@ -93,14 +99,21 @@ function Delivery() {
         </div>
         {/* End of Single Card */}
       </div>
-      <Link href="#enroll">
-        <a
-          className="font-bold uppercase text-sm py-5 px-10 shadow-sm bg-altColor text-white 
-              border rounded-md hover:bg-mainColor transition-all duration-700"
+      <div className="text-center">
+        <button
+          onClick={() => setShowDeliveryModal(true)}
+          className="font-bold uppercase text-xs py-6 px-8 bg-altColor text-white
+                  border rounded-md hover:bg-mainColor transition-all duration-700"
         >
-          Enroll
-        </a>
-      </Link>
+          get started
+        </button>
+      </div>
+
+      <Modal
+        content={<Enroll close={closeDeliveryModal} />}
+        close={closeDeliveryModal}
+        show={showDeliveryModal}
+      />
     </section>
   );
 }

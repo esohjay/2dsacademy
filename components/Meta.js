@@ -6,7 +6,7 @@ const Meta = ({ title, keywords, description }) => {
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <meta name="keywords" content={keywords} />
       <meta name="description" content={description} />
-      <meta name="theme-color" content="#407899" />
+      <meta name="theme-color" content="#58468C" />
       <meta charSet="utf-8" />
       <link
         rel="apple-touch-icon"
@@ -35,8 +35,8 @@ const Meta = ({ title, keywords, description }) => {
 Meta.defaultProps = {
   title: "2dsAcademy",
   keywords:
-    "data scientist, data analyst, machine learning, tech, uk, scotland, aberdeen",
-  description: "Daramola Olasunkanmi, a data scientist in United Kingdom.",
+    "nigeria, web, code, programming, website, web design, website design, web development, website development, learn, train, teach, enroll, study, frontend, backend, fullstack, reactjs, nidejs, javascript, html, css",
+  description: "Learn how to become a competent website developer.",
 };
 
 export default Meta;

@@ -5,7 +5,7 @@ const Layout = ({ children }) => {
   return (
     <>
       <Meta />
-      <div className="bg-bodyBg min-h-screen font-bigTexts overflow-hidden">
+      <div className="bg-bodyBg min-h-screen font-bigTexts relative overflow-hidden">
         <main>{children}</main>
       </div>
       <Footer />
