@@ -1,7 +1,7 @@
 import nc from "next-connect";
 import bcrypt from "bcryptjs";
 import Student from "../../models/Student";
-import db from "../../lib/dbConnect";
+import dbConnect from "../../lib/dbConnect";
 import { signToken } from "../../lib/auth";
 import { sendEmail } from "../../lib/mail";
 import { welcomeMessage } from "../../utils/emailTemplate";
@@ -9,7 +9,7 @@ import { welcomeMessage } from "../../utils/emailTemplate";
 const handler = nc();
 
 handler.post(async (req, res) => {
-  await db.connect();
+  await dbConnect();
   const { lname, fname, email, phone, password } = req.body;
   const newStudent = new Student({
     fname,
@@ -25,7 +25,7 @@ handler.post(async (req, res) => {
   newStudent.regNo = randomNo + initName;
 
   const student = await newStudent.save();
-  await db.disconnect();
+  // await db.disconnect();
 
   const token = signToken({
     fname: student.fname,
