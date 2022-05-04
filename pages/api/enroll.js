@@ -21,7 +21,7 @@ handler.post(async (req, res) => {
   });
 
   const randomNo = Math.random().toString().slice(2, 8);
-  const initName = lname.slice(0, 1) + fname.slice(1, 2);
+  const initName = lname.slice(0, 1) + fname.slice(0, 1);
   newStudent.regNo = randomNo + initName;
 
   const student = await newStudent.save();
