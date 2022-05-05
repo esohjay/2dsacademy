@@ -48,6 +48,7 @@ handler.post(async (req, res) => {
     role: student.role,
     email: student.email,
     phone: student.phone,
+    regNo: student.regNo,
     _id: student._id,
   });
 });

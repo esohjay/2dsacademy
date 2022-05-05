@@ -1,10 +1,21 @@
 import { Schema, model, models } from "mongoose";
 
-const ProgramSchema = new Schema({
-  name: String,
-  batch: String,
-  assessment: Array,
-});
+const ProgramSchema = new Schema(
+  {
+    name: String,
+    classes: {
+      type: Schema.Types.ObjectId,
+      ref: "Classes",
+      required: true,
+    },
+    assessment: Array,
+    isPaid: {
+      type: Boolean,
+      default: false,
+    },
+  },
+  { timestamps: true }
+);
 const StudentSchema = new Schema(
   {
     fname: String,
@@ -19,6 +30,10 @@ const StudentSchema = new Schema(
     isPaid: {
       type: Boolean,
       default: false,
+    },
+    role: {
+      type: String,
+      default: "Student",
     },
     regNo: String,
     password: String,
