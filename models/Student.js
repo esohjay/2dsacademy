@@ -9,6 +9,7 @@ const ProgramSchema = new Schema(
       required: true,
     },
     assessment: Array,
+    amountPaid: Number,
     isPaid: {
       type: Boolean,
       default: false,
@@ -26,11 +27,7 @@ const StudentSchema = new Schema(
       unique: true,
     },
     phone: Number,
-    amountPaid: Number,
-    isPaid: {
-      type: Boolean,
-      default: false,
-    },
+
     role: {
       type: String,
       default: "Student",

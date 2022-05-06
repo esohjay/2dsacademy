@@ -3,6 +3,7 @@ import { Schema, model, models } from "mongoose";
 const CoursesSchema = new Schema(
   {
     name: String,
+    price: Number,
     materials: [{ name: String, url: String }],
     activities: [
       {

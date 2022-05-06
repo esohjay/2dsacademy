@@ -25,7 +25,7 @@ const Meta = ({ title, keywords, description }) => {
         sizes="16x16"
         href="/favicon-16x16.png"
       />
-      <link rel="manifest" href="/site.webmanifest"></link>
+      <link rel="manifest" href="/manifest.json"></link>
       <link rel="icon" href="/favicon.ico" />
       <title>{title}</title>
     </Head>
