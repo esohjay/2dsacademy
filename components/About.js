@@ -45,10 +45,10 @@ export const About = () => {
         <div className="w-[70px] h-[3px] mx-auto mb-6 bg-altColor op"></div>
 
         <p className="text-mainColor2">
-          At 2dsAcademy, we train and give you all the support and resources you
+          At 2DSacademy, we train and give you all the support and resources you
           need to break into the tech industry and have a successful career. Our
-          courses caters for everybody, from novices through to intermediate
-          level developers who may want to pass on their skills and knowledge.
+          courses are designed to meet everyone's need. We will take you from
+          beginner level to an expert level.
         </p>
       </article>
     </section>

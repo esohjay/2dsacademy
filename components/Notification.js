@@ -19,7 +19,7 @@ function Notification({ variant, heading, message, reset }) {
     <>
       {show && (
         <section className="fixed top-4 left-0  w-full z-50  p-5">
-          <div className="flex relative bg-white w-full z-50 max-w-lg mx-auto justify-center items-center p-2 rounded-md shadow-md">
+          <div className="flex relative bg-white w-full z-50 max-w-lg mx-auto  items-center justify-around p-2 rounded-md shadow-md">
             <button
               onClick={hide}
               className="rounded-full absolute top-2 right-2 text-red-500 p-3 mx-2 md:mx-3"
@@ -32,9 +32,9 @@ function Notification({ variant, heading, message, reset }) {
               } `}
             >
               {variant === "success" ? (
-                <ImHappy className="text-2xl" />
+                <ImHappy className="text-3xl" />
               ) : (
-                <ImSad className="text-2xl" />
+                <ImSad className="text-3xl" />
               )}
             </button>
 

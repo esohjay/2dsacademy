@@ -43,8 +43,8 @@ function Delivery() {
             Physical Class
           </h3>
           <p className="text-mainColor2 text-md">
-            We have our physical at Banex Plaza. We have classes on Mondays,
-            Wednessdays and Fridays from 9am to 12pm.
+            We have our physical class at Banex Plaza. We have classes on
+            Mondays, Wednessdays and Fridays from 9am to 12pm.
           </p>
         </div>
         {/* End of Single Card */}

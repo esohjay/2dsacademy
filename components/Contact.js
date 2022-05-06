@@ -5,7 +5,6 @@ import { useStudentContext } from "../lib/dataStore/contexts/student";
 import { useStudentActions } from "../lib/dataStore/actions/student";
 
 import SocialBtns from "./SocialBtns";
-import Spiner from "./Spiner";
 
 import { FaMapMarkerAlt, FaPhoneAlt, FaEnvelope } from "react-icons/fa";
 
@@ -158,7 +157,7 @@ function Contact() {
                   <span className="text-xl fontboldm md:text-2xl text-white mx-2">
                     Email:
                   </span>{" "}
-                  2dsacademy@gmail.com
+                  2dstechacademy@gmail.com
                 </p>{" "}
               </a>
             </div>

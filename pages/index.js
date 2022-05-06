@@ -58,9 +58,9 @@ export default function Home() {
               Become A <span className="text-altColor  ">Web Developer</span>
             </h1>
             <p className="text-mainColor2 mb-8 text-md leading-loose">
-              You journey of becoming a website developer starts here. With us,
-              you learn not just the technical side of the job, but also the
-              business side of it.
+              Your journey of becoming a website developer starts here. At
+              2DSacademy, you learn not just the technical side of the job, but
+              also the business side of it.
             </p>
 
             <button

@@ -84,7 +84,7 @@ function Courses() {
           </h3>
           <p className="text-mainColor2 text-md">
             Learn the building block of web development. This course will teach
-            you how to build a responsible website with modern design.
+            you how to build a responsive website with modern design.
           </p>
           <Link href="#enroll">
             <a

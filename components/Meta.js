@@ -33,9 +33,9 @@ const Meta = ({ title, keywords, description }) => {
 };
 
 Meta.defaultProps = {
-  title: "2dsAcademy",
+  title: "2DSacademy",
   keywords:
-    "nigeria, web, code, programming, website, web design, website design, web development, website development, learn, train, teach, enroll, study, frontend, backend, fullstack, reactjs, nidejs, javascript, html, css",
+    "nigeria, web, code, data science, python, programming, website, web design, website design, web development, website development, learn, train, teach, enroll, study, frontend, backend, fullstack, reactjs, nidejs, javascript, html, css",
   description: "Learn how to become a competent website developer.",
 };
 

@@ -11,7 +11,7 @@ function Footer() {
   }, []);
   return (
     <footer className="flex flex-col justify-center space-y-6 py-10 bg-mainColor">
-      <h3 className="text-center text-white text-xl font-medium">2dsAcademy</h3>
+      <h3 className="text-center text-white text-xl font-medium">2DSacademy</h3>
       <div>
         <SocialBtns style={"border-[1px] border-white bg-mainColor2"} />
       </div>
