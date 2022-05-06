@@ -47,8 +47,8 @@ export const About = () => {
         <p className="text-mainColor2">
           At 2DSacademy, we train and give you all the support and resources you
           need to break into the tech industry and have a successful career. Our
-          courses are designed to meet everyone's need. We will take you from
-          beginner level to an expert level.
+          courses are designed to meet everyone&#39;s need. We will take you
+          from beginner level to an expert level.
         </p>
       </article>
     </section>
