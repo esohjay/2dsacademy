@@ -2,7 +2,12 @@ import { Schema, model, models } from "mongoose";
 
 const ProgramsSchema = new Schema(
   {
-    name: String,
+    name: {
+      type: String,
+      required: true,
+      unique: true,
+    },
+    description: String,
     classes: [
       {
         type: Schema.Types.ObjectId,

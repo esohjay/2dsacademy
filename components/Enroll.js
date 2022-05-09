@@ -64,7 +64,7 @@ function Enroll({ close }) {
           <input
             className={` border-mainColor border rounded w-full py-2 px-3 text-mainColor leading-tight ${
               errors.fname && "border-red-600"
-            } focus:outline-none focus:shadow-outline`}
+            } focus:outline-none focus:focus:border-2`}
             id="fname"
             type="text"
             {...register("fname", { required: true })}
@@ -84,7 +84,7 @@ function Enroll({ close }) {
           <input
             className={`border-mainColor border rounded w-full py-2 px-3 text-mainColor leading-tight ${
               errors.lname && "border-red-600"
-            } focus:outline-none focus:shadow-outline`}
+            } focus:outline-none focus:focus:border-2`}
             id="lname"
             type="text"
             {...register("lname", { required: true })}
@@ -104,7 +104,7 @@ function Enroll({ close }) {
           <input
             className={`border-mainColor appearance-none border rounded w-full py-2 px-3 text-mainColor leading-tight ${
               errors.email && "border-red-600"
-            } focus:outline-none focus:shadow-outline`}
+            } focus:outline-none focus:focus:border-2`}
             id="student-email"
             type="text"
             {...register("email", {
@@ -127,7 +127,7 @@ function Enroll({ close }) {
           <input
             className={`border-mainColor appearance-none border rounded w-full py-2 px-3 text-mainColor leading-tight ${
               errors.phone && "border-red-600"
-            } focus:outline-none focus:shadow-outline`}
+            } focus:outline-none focus:focus:border-2`}
             id="student-phone"
             type="number"
             {...register("phone", { required: true })}
@@ -147,7 +147,7 @@ function Enroll({ close }) {
           <input
             className={`border-mainColor appearance-none border rounded w-full py-2 px-3 text-mainColor leading-tight ${
               errors.password && "border-red-600"
-            } focus:outline-none focus:shadow-outline`}
+            } focus:outline-none focus:focus:border-2`}
             id="password"
             type="password"
             {...register("password", {
@@ -178,7 +178,7 @@ function Enroll({ close }) {
           <input
             className={`border-mainColor appearance-none border rounded w-full py-2 px-3 text-mainColor leading-tight ${
               errors.confirmPassword && "border-red-600"
-            } focus:outline-none focus:shadow-outline`}
+            } focus:outline-none focus:focus:border-2`}
             id="confirmPassword"
             type="password"
             {...register("confirmPassword", {
@@ -197,7 +197,7 @@ function Enroll({ close }) {
         </div>
 
         <button
-          className="bg-altColor hover:bg-mainColor transition-all duration-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+          className="bg-altColor hover:bg-mainColor transition-all duration-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:focus:border-2"
           type="submit"
         >
           Send

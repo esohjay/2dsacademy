@@ -24,6 +24,7 @@ module.exports = {
         iconBg: "url('/images/Polygon.png')",
         wave: "url('/images/wave.svg')",
         contact: "url('/images/foggy-birds.png')",
+        portal: "url('/images/dark-mosaic.png')",
         sliderPattern:
           "linear-gradient(to right bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.7)),url('/images/pic4.jpg')",
       },
@@ -61,6 +62,16 @@ module.exports = {
             transform: " translateY(0)",
           },
         },
+        contentSlideIn: {
+          "0%": {
+            opacity: 0,
+            transform: "translateX(-40px)",
+          },
+          "100%": {
+            opacity: 1,
+            transform: " translateX(0)",
+          },
+        },
       },
       animation: {
         moveFirst: "moveAround 25s infinite linear",
@@ -70,6 +81,8 @@ module.exports = {
         moveFifth: "moveAround 15s infinite linear",
         moveSixth: "moveAround 35s infinite linear",
         modalFadeIn: "1000ms ease-in-out 0s normal none 1 running fadeInDown",
+        contentSlideIn:
+          "500ms ease-in-out 0s normal none 1 running contentSlideIn",
       },
     },
   },

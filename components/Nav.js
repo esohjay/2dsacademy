@@ -1,5 +1,5 @@
-import Link from "next/link";
 import React, { useState, useEffect } from "react";
+import Link from "next/link";
 
 import Modal from "./Modal";
 import Enroll from "./Enroll";

@@ -13,11 +13,13 @@ const TeachersSchema = new Schema(
     teacherId: String,
     password: String,
     feedbacks: [{ rating: Number, comment: String }],
-    classes: {
-      type: Schema.Types.ObjectId,
-      ref: "Classes",
-      required: true,
-    },
+    classes: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Classes",
+        required: true,
+      },
+    ],
   },
   { timestamps: true }
 );

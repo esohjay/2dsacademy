@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import Link from "next/link";
 
 import { useStudentContext } from "../lib/dataStore/contexts/student";
 import {
@@ -7,8 +6,6 @@ import {
   CONTACT_US_RESET,
 } from "../lib/dataStore/constants/student";
 import Image from "next/image";
-
-import { FaRegArrowAltCircleUp } from "react-icons/fa";
 
 import coder from "../public/images/Coder.svg";
 

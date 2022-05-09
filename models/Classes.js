@@ -2,7 +2,11 @@ import { Schema, model, models } from "mongoose";
 
 const ClassesSchema = new Schema(
   {
-    name: String,
+    name: {
+      type: String,
+      required: true,
+      unique: true,
+    },
     courses: [
       {
         type: Schema.Types.ObjectId,
