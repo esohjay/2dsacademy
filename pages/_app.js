@@ -1,18 +1,20 @@
 import "../styles/globals.css";
-import Layout from "../components/Layout";
-import { StudentProvider } from "../lib/dataStore/contexts/student";
-import { AdminProvider } from "../lib/dataStore/contexts/admin";
+import { SessionProvider } from "next-auth/react";
+import Layout from "../components/layouts/Layout";
+import { UserProvider } from "../lib/dataStore/contexts/user";
+import { CourseProvider } from "../lib/dataStore/contexts/course";
 // import { GeneralProvider } from "../lib/dataStore/contexts/general";
 
 function MyApp({ Component, pageProps }) {
-  return (
-    <AdminProvider>
-      <StudentProvider>
-        <Layout>
+  const getLayout = Component.getLayout || ((page) => <Layout>{page}</Layout>);
+  return getLayout(
+    <CourseProvider>
+      <UserProvider>
+        <SessionProvider>
           <Component {...pageProps} />
-        </Layout>
-      </StudentProvider>
-    </AdminProvider>
+        </SessionProvider>
+      </UserProvider>
+    </CourseProvider>
   );
 }
 

@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
+import { useRouter } from "next/router";
 
-import { useStudentContext } from "../lib/dataStore/contexts/student";
+import { useUserContext } from "../lib/dataStore/contexts/user";
 import {
   ENROLL_STUDENT_RESET,
   CONTACT_US_RESET,
-} from "../lib/dataStore/constants/student";
+  LOGIN_RESET,
+} from "../lib/dataStore/constants/user";
 import Image from "next/image";
 
 import coder from "../public/images/Coder.svg";
@@ -22,12 +24,15 @@ import Modal from "../components/Modal";
 import Notification from "../components/Notification";
 import Spiner from "../components/Spiner";
 import BackToTop from "../components/BackToTop";
+import { getProviders, signIn } from "next-auth/react";
 
-export default function Home() {
-  const { state, dispatch } = useStudentContext();
-  const { enrolled, error, messageSent, loading } = state;
+export default function Home({ providers }) {
+  const { state, dispatch } = useUserContext();
+  const { enrolled, error, messageSent, userData, loading, loggedin } = state;
   const [showHeroModal, setShowHeroModal] = useState(false);
+  const router = useRouter();
 
+  
   const closeHeroModal = () => {
     setShowHeroModal(false);
   };
@@ -40,7 +45,15 @@ export default function Home() {
       clearTimeout(clear);
     };
   }, [enrolled, messageSent]);
-
+  useEffect(() => {
+    if (userData) {
+      if (loggedin) {
+        router.push(`/portal/student/${userData._id}`);
+        dispatch({ type: LOGIN_RESET });
+      }
+    }
+  }, [loggedin, userData]);
+  console.log(loggedin, "loggedin");
   return (
     <>
       <section
@@ -71,7 +84,13 @@ export default function Home() {
             <Modal
               close={closeHeroModal}
               show={showHeroModal}
-              content={<Enroll close={closeHeroModal} />}
+              content={
+                <Enroll
+                  close={closeHeroModal}
+                  providers={providers}
+                  signIn={signIn}
+                />
+              }
             />
           </article>
           <figure className="relative z-20 w-full md:grid md:place-items-end ">
@@ -117,4 +136,14 @@ export default function Home() {
       {loading && <Spiner />}
     </>
   );
+}
+
+export async function getServerSideProps(context) {
+  const providers = await getProviders();
+
+  return {
+    props: {
+      providers,
+    },
+  };
 }

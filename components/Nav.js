@@ -1,15 +1,28 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 import Modal from "./Modal";
 import Enroll from "./Enroll";
+import Login from "./Login";
+import { useUserActions } from "../lib/dataStore/actions/user";
+import { useUserContext } from "../lib/dataStore/contexts/user";
 
 const Nav = ({ background }) => {
+  const router = useRouter();
+  const { logout } = useUserActions();
+  const { state } = useUserContext();
+  const { userData, loggedout } = state;
   const [showNav, setShowNav] = useState(false);
+  const [userState, setUserState] = useState(false);
   const [fixedNav, setFixedNav] = useState("");
-  const [showNavModal, setShowNavModal] = useState(false);
-  const closeNavModal = () => {
-    setShowNavModal(false);
+  const [showEnrollModal, setShowEnrollModal] = useState(false);
+  const [showLoginModal, setShowLoginModal] = useState(false);
+  const closeEnrollModal = () => {
+    setShowEnrollModal(false);
+  };
+  const closeLoginModal = () => {
+    setShowLoginModal(false);
   };
   const handleScroll = () => {
     if (window.pageYOffset > 100) {
@@ -22,6 +35,19 @@ const Nav = ({ background }) => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  useEffect(() => {
+    if (userData) {
+      setUserState(true);
+    } else {
+      setUserState(false);
+    }
+    if (loggedout) {
+      router.push("/");
+    }
+  }, [userData, loggedout]);
+  console.log("userstate", userState);
+  console.log("userData", userData);
   return (
     // Start of Nav section
     <header className={`h-[60px] ${fixedNav} relative z-40  `}>
@@ -36,7 +62,7 @@ const Nav = ({ background }) => {
           <Link href="/">2DSACADEMY</Link>
         </h3>
         {/* Big screen nav links */}
-        <ul className="hidden space-x-6 md:flex justify-center w-[60%] font-medium items-center bg-transparent  ">
+        <ul className="hidden space-x-6 md:flex justify-center w-[60%] font-bold items-center bg-transparent  ">
           <li>
             <Link href="/">Home</Link>
           </li>
@@ -51,19 +77,44 @@ const Nav = ({ background }) => {
             <Link href="#contact">Contact</Link>
           </li>
         </ul>
-
-        <button
-          onClick={() => setShowNavModal(true)}
-          className="py-2 text-center  bg-altColor px-7 text-white font-bold rounded-md hidden 
+        <div className="hidden md:flex gap-2">
+          {!userState ? (
+            <div className="flex gap-3">
+              <button
+                onClick={() => setShowEnrollModal(true)}
+                className=" py-2 text-center  bg-altColor px-7 text-white font-bold rounded-md 
             hover:bg-mainColor md:block transition-all duration-700"
-        >
-          Enroll
-        </button>
+              >
+                Enroll
+              </button>
+              <button
+                onClick={() => setShowLoginModal(true)}
+                className={`py-2 text-center  bg-transparent px-7 text-mainColor font-bold rounded-md 
+            hover:bg-mainColor hover:text-white md:block transition-all duration-700 uppercase `}
+              >
+                Login
+              </button>
+            </div>
+          ) : (
+            <button
+              onClick={logout}
+              className={`py-2 text-center  bg-transparent px-7 text-mainColor font-bold rounded-md
+            hover:bg-mainColor hover:text-white md:block transition-all duration-700 uppercase }`}
+            >
+              Logout
+            </button>
+          )}
+        </div>
 
         <Modal
-          content={<Enroll close={closeNavModal} />}
-          close={closeNavModal}
-          show={showNavModal}
+          content={<Enroll close={closeEnrollModal} />}
+          close={closeEnrollModal}
+          show={showEnrollModal}
+        />
+        <Modal
+          content={<Login close={closeLoginModal} />}
+          close={closeLoginModal}
+          show={showLoginModal}
         />
         {/* Hamburger Icon */}
         <button
@@ -88,7 +139,7 @@ const Nav = ({ background }) => {
             className=" w-[100%] text-mainColor hover:bg-mainColor hover:text-white cursor-pointer font-medium transition-all duration-500 "
           >
             <Link href="/">
-              <a className="py-5 block text-center  ">Home</a>
+              <a className="py-5 block text-center font-bold ">Home</a>
             </Link>
           </li>
           <li
@@ -96,7 +147,7 @@ const Nav = ({ background }) => {
             className=" w-[100%] text-mainColor hover:bg-mainColor hover:text-white cursor-pointer font-medium transition-all duration-500 "
           >
             <Link href="#about">
-              <a className="py-5 block text-center  ">About</a>
+              <a className="py-5 block text-center  font-bold">About</a>
             </Link>
           </li>
           <li
@@ -104,7 +155,7 @@ const Nav = ({ background }) => {
             className=" w-[100%] text-mainColor hover:bg-mainColor hover:text-white cursor-pointer font-medium transition-all duration-500 "
           >
             <Link href="#courses">
-              <a className="py-5 block text-center  ">Courses</a>
+              <a className="py-5 block text-center  font-bold">Courses</a>
             </Link>
           </li>
 
@@ -113,18 +164,51 @@ const Nav = ({ background }) => {
             className=" w-[100%]  text-mainColor hover:bg-mainColor hover:text-white cursor-pointer font-medium transition-all duration-500 "
           >
             <Link href="#contact">
-              <a className="py-5 block text-center w-full ">Contact</a>
+              <a className="py-5 block text-center w-full font-bold">Contact</a>
             </Link>
           </li>
           <div className="w-full h-[0.5px] my-3 bg-lightColor"></div>
-          <li className=" w-[100%]  text-white bg-altColor text-center hover:bg-mainColor  cursor-pointer font-medium transition-all duration-500 ">
-            <button
-              onClick={() => setShowNavModal(true)}
-              className="py-5 w-full block text-center px-7 "
+          {!userState ? (
+            <>
+              <li
+                className={`w-[100%] mb-3  text-white bg-altColor text-center hover:bg-transparent  
+          cursor-pointer border font-bold border-transparent transition-all duration-500
+          hover:border-altColor hover:text-altColor `}
+              >
+                <button
+                  onClick={() => setShowEnrollModal(true)}
+                  className="py-5 w-full block text-center px-7 font-bold"
+                >
+                  Enroll
+                </button>
+              </li>
+              <li
+                className={`w-[100%]  text-white bg-mainColor text-center hover:bg-transparent
+          hover:text-mainColor border border-transparent cursor-pointer  
+          transition-all duration-500 hover:border-mainColor `}
+              >
+                <button
+                  onClick={() => setShowLoginModal(true)}
+                  className="py-5 w-full block text-center px-7 font-bold"
+                >
+                  Login
+                </button>
+              </li>
+            </>
+          ) : (
+            <li
+              className={` w-[100%]  text-white bg-mainColor text-center hover:bg-transparent
+          hover:text-mainColor border border-transparent cursor-pointer  
+          transition-all duration-500 hover:border-mainColor `}
             >
-              Enroll
-            </button>
-          </li>
+              <button
+                onClick={logout}
+                className="py-5 w-full block text-center px-7 font-bold"
+              >
+                Logout
+              </button>
+            </li>
+          )}
         </ul>
       </nav>
       <style jsx>

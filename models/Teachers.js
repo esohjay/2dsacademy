@@ -20,6 +20,7 @@ const TeachersSchema = new Schema(
         required: true,
       },
     ],
+    role: String,
   },
   { timestamps: true }
 );

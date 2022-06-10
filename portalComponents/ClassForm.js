@@ -3,12 +3,12 @@ import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 //import AdminLayout from "../../../portalComponents/AdminLayout";
 
-import { useAdminContext } from "../lib/dataStore/contexts/admin";
-import { useClassActions } from "../lib/dataStore/actions/admin/class";
+import { useCourseContext } from "../lib/dataStore/contexts/course";
+import { useClassActions } from "../lib/dataStore/actions/portal/class";
 
 function addclass({ close }) {
   //   const router = useRouter();
-  const { state } = useAdminContext();
+  const { state } = useCourseContext();
   const { addClass } = useClassActions();
   const { classAdded, program } = state;
 

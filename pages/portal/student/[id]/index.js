@@ -1,5 +1,5 @@
 import React from "react";
-import PortalLayout from "../../../../portalComponents/PortalLayout";
+import PortalLayout from "../../../../components/layouts/PortalLayout";
 
 function student() {
   return (

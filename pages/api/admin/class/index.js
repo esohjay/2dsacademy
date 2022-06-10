@@ -10,7 +10,6 @@ handler.post(async (req, res) => {
   await dbConnect();
   const { name, status, endDate, startDate, program } = req.body;
   const foundProgram = await Programs.findById(program);
-  console.log(foundProgram);
   try {
     const newClass = new Classes({
       name,
@@ -36,5 +35,10 @@ handler.post(async (req, res) => {
     res.status(500).json({ message: error });
   }
 });
-
+handler.get(async (req, res) => {
+  console.log("here");
+  await dbConnect();
+  const foundClass = await Classes.findById(req.query.id);
+  res.json(foundClass);
+});
 export default handler;

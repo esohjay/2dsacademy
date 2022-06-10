@@ -1,8 +1,8 @@
 import nc from "next-connect";
 import bcrypt from "bcryptjs";
-import Student from "../../models/Student";
-import dbConnect from "../../lib/dbConnect";
-import { signToken } from "../../lib/auth";
+import Student from "../../../models/Student";
+import dbConnect from "../../../lib/dbConnect";
+import { signToken } from "../../../lib/auth";
 // import { sendEmail } from "../../lib/mail";
 // import { welcomeMessage } from "../../utils/emailTemplate";
 

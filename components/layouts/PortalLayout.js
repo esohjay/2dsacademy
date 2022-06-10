@@ -10,17 +10,21 @@ import {
   FaUser,
   FaEnvelope,
   FaPhoneAlt,
-  FaFileCode,
-  FaUsers,
-  FaFolderPlus,
-  FaUserPlus,
-  FaSchool,
+  FaWpforms,
+  FaCode,
+  FaListUl,
+  FaMoneyCheckAlt,
 } from "react-icons/fa";
-import { GoDashboard } from "react-icons/go";
-import { MdPhotoCameraBack, MdFeedback } from "react-icons/md";
+import { ImBook } from "react-icons/im";
+import {
+  MdAssignment,
+  MdPhotoCameraBack,
+  MdFeedback,
+  MdOutlineAssessment,
+} from "react-icons/md";
 
-import user from "../public/images/user.svg";
-function AdminLayout({ children }) {
+import user from "../../public/images/user.svg";
+function PortalLayout({ children }) {
   const [showNav, setShowNav] = useState(false);
   return (
     <>
@@ -52,10 +56,8 @@ function AdminLayout({ children }) {
           {/* sidebar wrapper */}
           <aside
             className={`fixed h-[91vh] px-2 overflow-y-scroll scrollbar-thin scrollbar-thumb-mainColor 
-          scrollbar-track-gray-100 bg-portal bg-mainColor w-[280px] md:block  flex flex-col
-          ${
-            showNav ? " block animate-contentSlideIn" : " hidden"
-          } transition-all duration-1000
+          scrollbar-track-gray-100 bg-portal bg-mainColor w-[280px] md:opacity-100 flex flex-col
+          ${showNav ? "opacity-100" : "opacity-0"} transition-all duration-1000
           `}
           >
             {/* sidebar content purple part*/}
@@ -75,7 +77,6 @@ function AdminLayout({ children }) {
                   alt={"learn web development"}
                 />
                 <div className="text-center text-white">
-                  <p className="leading-loose">Welcome</p>
                   <p className="font-extrabold leading-loose tracking-widest">
                     2737382OD
                   </p>
@@ -125,7 +126,7 @@ function AdminLayout({ children }) {
               className=" text-white text-xl font-bold  p-3 border-b 
                 border-b-lightColor "
             >
-              Admin Dashboard
+              Student Dashboard
             </h2>
 
             <nav className="mb-10">
@@ -133,10 +134,10 @@ function AdminLayout({ children }) {
                 className=" hover:bg-mainColor border-b border-b-lightColor bg-opacity-40 pl-3 group flex items-center
                  transition-all duration-500"
               >
-                <GoDashboard className="text-white text-md " />
+                <FaWpforms className="text-white text-md " />
                 <Link href={`#`}>
                   <a className="block text-white tracking-widest font-bold py-3 px-3 ">
-                    Dashboard
+                    Enroll
                   </a>
                 </Link>
               </li>
@@ -144,10 +145,10 @@ function AdminLayout({ children }) {
                 className=" hover:bg-mainColor border-b border-b-lightColor bg-opacity-40 pl-3 group flex items-center
                  transition-all duration-500"
               >
-                <FaFolderPlus className="text-white text-md " />
-                <Link href={`/portal/admin/newprogram`}>
+                <ImBook className="text-white text-md " />
+                <Link href={`#`}>
                   <a className="block text-white tracking-widest font-bold py-3 px-3 ">
-                    Add Program
+                    Courses
                   </a>
                 </Link>
               </li>
@@ -155,10 +156,10 @@ function AdminLayout({ children }) {
                 className=" hover:bg-mainColor border-b border-b-lightColor bg-opacity-40 pl-3 group flex items-center
                  transition-all duration-500"
               >
-                <FaFileCode className="text-white text-md " />
+                <MdAssignment className="text-white text-md " />
                 <Link href={`#`}>
                   <a className="block text-white tracking-widest font-bold py-3 px-3 ">
-                    Programmes
+                    Assignments
                   </a>
                 </Link>
               </li>
@@ -166,10 +167,10 @@ function AdminLayout({ children }) {
                 className=" hover:bg-mainColor border-b border-b-lightColor bg-opacity-40 pl-3 group flex items-center
                  transition-all duration-500"
               >
-                <FaUserPlus className="text-white text-md " />
+                <FaCode className="text-white text-md " />
                 <Link href={`#`}>
                   <a className="block text-white tracking-widest font-bold py-3 px-3 ">
-                    Add Staff
+                    Exam
                   </a>
                 </Link>
               </li>
@@ -177,10 +178,10 @@ function AdminLayout({ children }) {
                 className=" hover:bg-mainColor border-b border-b-lightColor bg-opacity-40 pl-3 group flex items-center
                  transition-all duration-500"
               >
-                <FaUsers className="text-white text-md " />
+                <FaListUl className="text-white text-md " />
                 <Link href={`#`}>
                   <a className="block text-white tracking-widest font-bold py-3 px-3 ">
-                    Staff
+                    My Syllabus
                   </a>
                 </Link>
               </li>
@@ -188,10 +189,10 @@ function AdminLayout({ children }) {
                 className=" hover:bg-mainColor border-b border-b-lightColor bg-opacity-40 pl-3 group flex items-center
                  transition-all duration-500"
               >
-                <FaSchool className="text-white text-md " />
+                <MdOutlineAssessment className="text-white text-md " />
                 <Link href={`#`}>
                   <a className="block text-white tracking-widest font-bold py-3 px-3 ">
-                    Classes
+                    Grades
                   </a>
                 </Link>
               </li>
@@ -199,10 +200,10 @@ function AdminLayout({ children }) {
                 className=" hover:bg-mainColor border-b border-b-lightColor bg-opacity-40 pl-3 group flex items-center
                  transition-all duration-500"
               >
-                <FaUsers className="text-white text-md " />
+                <FaMoneyCheckAlt className="text-white text-md " />
                 <Link href={`#`}>
                   <a className="block text-white tracking-widest font-bold py-3 px-3 ">
-                    Students
+                    Make payments
                   </a>
                 </Link>
               </li>
@@ -213,7 +214,7 @@ function AdminLayout({ children }) {
                 <MdFeedback className="text-white text-md " />
                 <Link href={`#`}>
                   <a className="block text-white tracking-widest font-bold py-3 px-3 ">
-                    Tickets
+                    Ticket&#47;Complain
                   </a>
                 </Link>
               </li>
@@ -231,7 +232,7 @@ function AdminLayout({ children }) {
             </nav>
           </aside>
 
-          <main className="w-full md:ml-[280px] px-4 py-10">{children}</main>
+          <main className="w-full md:ml-[280px]">{children}</main>
         </section>
         {/* Main body end */}
       </section>
@@ -308,4 +309,4 @@ function AdminLayout({ children }) {
   );
 }
 
-export default AdminLayout;
+export default PortalLayout;

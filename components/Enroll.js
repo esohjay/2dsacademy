@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
-import { useStudentContext } from "../lib/dataStore/contexts/student";
-import { useStudentActions } from "../lib/dataStore/actions/student";
+import { useUserContext } from "../lib/dataStore/contexts/user";
+import { useUserActions } from "../lib/dataStore/actions/user";
 
-function Enroll({ close }) {
-  const { state } = useStudentContext();
-  const { enrollStudent } = useStudentActions();
+function Enroll({ close, providers, signIn }) {
+  const { state } = useUserContext();
+  const { enrollStudent } = useUserActions();
   const { loading } = state;
 
   const [confirmPasswordError, setConfirmPasswordError] = useState(false);
@@ -197,12 +197,25 @@ function Enroll({ close }) {
         </div>
 
         <button
-          className="bg-altColor hover:bg-mainColor transition-all duration-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:focus:border-2"
+          className="bg-altColor hover:bg-mainColor transition-all duration-700 text-white
+           font-bold  py-2 px-10 rounded focus:outline-none focus:focus:border-2"
           type="submit"
         >
-          Send
+          Enroll
         </button>
       </form>
+      {Object.values(providers).map((provider) => (
+        <div key={provider.name}>
+          <div className="pl-4">
+            <button
+              className="text-blue-700 font-semibold rounded-full border border-blue-700 px-5 py-1.5 transition-all hover:border-2"
+              onClick={() => signIn(provider.id, { callbackUrl: "/" })}
+            >
+              Sign in
+            </button>
+          </div>
+        </div>
+      ))}
     </div>
   );
 }

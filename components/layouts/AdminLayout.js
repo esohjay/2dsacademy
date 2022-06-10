@@ -10,25 +10,25 @@ import {
   FaUser,
   FaEnvelope,
   FaPhoneAlt,
-  FaWpforms,
-  FaCode,
-  FaListUl,
-  FaMoneyCheckAlt,
+  FaFileCode,
+  FaUsers,
+  FaFolderPlus,
+  FaUserPlus,
+  FaSchool,
 } from "react-icons/fa";
-import { ImBook } from "react-icons/im";
-import {
-  MdAssignment,
-  MdPhotoCameraBack,
-  MdFeedback,
-  MdOutlineAssessment,
-} from "react-icons/md";
+import { GoDashboard } from "react-icons/go";
+import { MdPhotoCameraBack, MdFeedback } from "react-icons/md";
 
-import user from "../public/images/user.svg";
-function PortalLayout({ children }) {
+import Footer from "../Footer";
+import Meta from "../Meta";
+
+import user from "../../public/images/user.svg";
+function AdminLayout({ children }) {
   const [showNav, setShowNav] = useState(false);
   return (
     <>
-      <section className="flex flex-col mb-16">
+      <Meta />
+      <section className="flex flex-col  relative">
         {/* Top nav start */}
         <header
           className={`h-[60px]  fixed top-0 left-0 w-full z-40 bg-mainColor text-white shadow-md`}
@@ -55,9 +55,10 @@ function PortalLayout({ children }) {
         <section className="flex flex-col relative min-h-screen md:flex-row mt-[60px] ">
           {/* sidebar wrapper */}
           <aside
-            className={`fixed h-[91vh] px-2 overflow-y-scroll scrollbar-thin scrollbar-thumb-mainColor 
-          scrollbar-track-gray-100 bg-portal bg-mainColor w-[280px] md:opacity-100 flex flex-col
-          ${showNav ? "opacity-100" : "opacity-0"} transition-all duration-1000
+            className={`fixed h-[91vh] min-h-[91vh] bg-bodyBg  px-2 overflow-y-scroll w-[280px] md:block  flex flex-col
+          ${
+            showNav ? " block animate-contentSlideIn" : " hidden"
+          } transition-all duration-1000
           `}
           >
             {/* sidebar content purple part*/}
@@ -71,33 +72,33 @@ function PortalLayout({ children }) {
                 <Image
                   src={user}
                   objectFit="contain"
-                  width={100}
-                  height={100}
+                  width={60}
+                  height={60}
                   className="rounded-full"
                   alt={"learn web development"}
                 />
-                <div className="text-center text-white">
+                <div className=" text-mainColor">
                   <p className="font-extrabold leading-loose tracking-widest">
                     2737382OD
                   </p>
                   {/* user details icons */}
                   <div className="flex justify-evenly">
-                    <Link href={``}>
+                    <Link href={`/`}>
                       <a className="block hover:text-altColor transition-all duration-700">
                         <FaBell />
                       </a>
                     </Link>
-                    <Link href={``}>
+                    <Link href={`/`}>
                       <a className="block hover:text-altColor transition-all duration-700">
                         <FaEdit />
                       </a>
                     </Link>
-                    <Link href={``}>
+                    <Link href={`/`}>
                       <a className="block hover:text-altColor transition-all duration-700">
                         <FaCog />
                       </a>
                     </Link>
-                    <Link href={``}>
+                    <Link href={`/`}>
                       <a className="block hover:text-altColor transition-all duration-700">
                         <FaPowerOff />
                       </a>
@@ -105,7 +106,7 @@ function PortalLayout({ children }) {
                   </div>
                 </div>
               </div>
-              <div className="text-white mb-3 p-3 leading-loose tracking-widest border-b border-b-lightColor">
+              <div className="text-mainColor mb-3 p-3 leading-loose tracking-widest border-b border-b-lightColor">
                 <div className="flex gap-2  items-center">
                   <FaUser />
                   <p>Olusoji Daramola</p>
@@ -122,109 +123,133 @@ function PortalLayout({ children }) {
             </div>
             {/* User details end */}
 
-            <h2
-              className=" text-white text-xl font-bold  p-3 border-b 
-                border-b-lightColor "
-            >
-              Student Dashboard
+            <h2 className=" text-mainColor text-xl font-bold  p-3  ">
+              Admin Dashboard
             </h2>
 
             <nav className="mb-10">
               <li
-                className=" hover:bg-mainColor border-b border-b-lightColor bg-opacity-40 pl-3 group flex items-center
-                 transition-all duration-500"
+                className="   bg-opacity-40 pl-3 group flex items-center
+                 transition-all duration-500 cursor-pointer hover:bg-mainColor hover:text-white"
               >
-                <FaWpforms className="text-white text-md " />
-                <Link href={`#`}>
-                  <a className="block text-white tracking-widest font-bold py-3 px-3 ">
-                    Enroll
+                <GoDashboard className="text-mainColor text-md group-hover:text-white" />
+                <Link href={`/`}>
+                  <a
+                    className="block text-mainColor tracking-widest font-medium py-3 px-3 
+                  group-hover:text-white "
+                  >
+                    Dashboard
                   </a>
                 </Link>
               </li>
               <li
-                className=" hover:bg-mainColor border-b border-b-lightColor bg-opacity-40 pl-3 group flex items-center
-                 transition-all duration-500"
+                className="   bg-opacity-40 pl-3 group flex items-center
+                 transition-all duration-500 cursor-pointer hover:bg-mainColor hover:text-white"
               >
-                <ImBook className="text-white text-md " />
-                <Link href={`#`}>
-                  <a className="block text-white tracking-widest font-bold py-3 px-3 ">
-                    Courses
+                <FaFolderPlus className="text-mainColor text-md group-hover:text-white" />
+                <Link href={`/portal/admin/newprogram`}>
+                  <a
+                    className="block text-mainColor tracking-widest font-medium py-3 px-3 
+                  group-hover:text-white "
+                  >
+                    Add Program
                   </a>
                 </Link>
               </li>
               <li
-                className=" hover:bg-mainColor border-b border-b-lightColor bg-opacity-40 pl-3 group flex items-center
-                 transition-all duration-500"
+                className="   bg-opacity-40 pl-3 group flex items-center
+                 transition-all duration-500 cursor-pointer hover:bg-mainColor hover:text-white"
               >
-                <MdAssignment className="text-white text-md " />
-                <Link href={`#`}>
-                  <a className="block text-white tracking-widest font-bold py-3 px-3 ">
-                    Assignments
+                <FaFileCode className="text-mainColor text-md group-hover:text-white" />
+                <Link href={`/`}>
+                  <a
+                    className="block text-mainColor tracking-widest font-medium py-3 px-3 
+                  group-hover:text-white "
+                  >
+                    Programmes
                   </a>
                 </Link>
               </li>
               <li
-                className=" hover:bg-mainColor border-b border-b-lightColor bg-opacity-40 pl-3 group flex items-center
-                 transition-all duration-500"
+                className="   bg-opacity-40 pl-3 group flex items-center
+                 transition-all duration-500 cursor-pointer hover:bg-mainColor hover:text-white"
               >
-                <FaCode className="text-white text-md " />
-                <Link href={`#`}>
-                  <a className="block text-white tracking-widest font-bold py-3 px-3 ">
-                    Exam
+                <FaUserPlus className="text-mainColor text-md group-hover:text-white" />
+                <Link href={`/`}>
+                  <a
+                    className="block text-mainColor tracking-widest font-medium py-3 px-3 
+                  group-hover:text-white "
+                  >
+                    Add Staff
                   </a>
                 </Link>
               </li>
               <li
-                className=" hover:bg-mainColor border-b border-b-lightColor bg-opacity-40 pl-3 group flex items-center
-                 transition-all duration-500"
+                className="   bg-opacity-40 pl-3 group flex items-center
+                 transition-all duration-500 cursor-pointer hover:bg-mainColor hover:text-white"
               >
-                <FaListUl className="text-white text-md " />
-                <Link href={`#`}>
-                  <a className="block text-white tracking-widest font-bold py-3 px-3 ">
-                    My Syllabus
+                <FaUsers className="text-mainColor text-md group-hover:text-white" />
+                <Link href={`/`}>
+                  <a
+                    className="block text-mainColor tracking-widest font-medium py-3 px-3 
+                  group-hover:text-white "
+                  >
+                    Staff
                   </a>
                 </Link>
               </li>
               <li
-                className=" hover:bg-mainColor border-b border-b-lightColor bg-opacity-40 pl-3 group flex items-center
-                 transition-all duration-500"
+                className="   bg-opacity-40 pl-3 group flex items-center
+                 transition-all duration-500 cursor-pointer hover:bg-mainColor hover:text-white"
               >
-                <MdOutlineAssessment className="text-white text-md " />
-                <Link href={`#`}>
-                  <a className="block text-white tracking-widest font-bold py-3 px-3 ">
-                    Grades
+                <FaSchool className="text-mainColor text-md group-hover:text-white" />
+                <Link href={`/`}>
+                  <a
+                    className="block text-mainColor tracking-widest font-medium py-3 px-3 
+                  group-hover:text-white "
+                  >
+                    Classes
                   </a>
                 </Link>
               </li>
               <li
-                className=" hover:bg-mainColor border-b border-b-lightColor bg-opacity-40 pl-3 group flex items-center
-                 transition-all duration-500"
+                className="   bg-opacity-40 pl-3 group flex items-center
+                 transition-all duration-500 cursor-pointer hover:bg-mainColor hover:text-white"
               >
-                <FaMoneyCheckAlt className="text-white text-md " />
-                <Link href={`#`}>
-                  <a className="block text-white tracking-widest font-bold py-3 px-3 ">
-                    Make payments
+                <FaUsers className="text-mainColor text-md group-hover:text-white" />
+                <Link href={`/`}>
+                  <a
+                    className="block text-mainColor tracking-widest font-medium py-3 px-3 
+                  group-hover:text-white "
+                  >
+                    Students
                   </a>
                 </Link>
               </li>
               <li
-                className=" hover:bg-mainColor border-b border-b-lightColor bg-opacity-40 pl-3 group flex items-center
-                 transition-all duration-500"
+                className="   bg-opacity-40 pl-3 group flex items-center
+                 transition-all duration-500 cursor-pointer hover:bg-mainColor hover:text-white"
               >
-                <MdFeedback className="text-white text-md " />
-                <Link href={`#`}>
-                  <a className="block text-white tracking-widest font-bold py-3 px-3 ">
-                    Ticket&#47;Complain
+                <MdFeedback className="text-mainColor text-md group-hover:text-white" />
+                <Link href={`/`}>
+                  <a
+                    className="block text-mainColor tracking-widest font-medium py-3 px-3 
+                  group-hover:text-white "
+                  >
+                    Tickets
                   </a>
                 </Link>
               </li>
               <li
-                className=" hover:bg-mainColor border-b border-b-lightColor bg-opacity-40 pl-3 group flex items-center
-                 transition-all duration-500"
+                className="   bg-opacity-40 pl-3 group flex items-center
+                 transition-all duration-500 cursor-pointer hover:bg-mainColor hover:text-white"
               >
-                <MdPhotoCameraBack className="text-white text-md " />
-                <Link href={`#`}>
-                  <a className="block text-white tracking-widest font-bold py-3 px-3 ">
+                <MdPhotoCameraBack className="text-mainColor text-md group-hover:text-white" />
+                <Link href={`/`}>
+                  <a
+                    className="block text-mainColor tracking-widest font-medium py-3 px-3 
+                  group-hover:text-white "
+                  >
                     Change Picture
                   </a>
                 </Link>
@@ -232,7 +257,10 @@ function PortalLayout({ children }) {
             </nav>
           </aside>
 
-          <main className="w-full md:ml-[280px]">{children}</main>
+          <main className="w-full md:ml-[280px] ">
+            <section className="min-h-screen">{children}</section>
+            <Footer />
+          </main>
         </section>
         {/* Main body end */}
       </section>
@@ -245,7 +273,17 @@ function PortalLayout({ children }) {
             transition: all 0.25s;
             position: relative;
           }
+          ::-webkit-scrollbar {
+            width: 3px;
+          }
 
+          ::-webkit-scrollbar-track {
+            box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+          }
+
+          ::-webkit-scrollbar-thumb {
+            background-color: #58468c;
+          }
           .hamburgerTop,
           .hamburgerMiddle,
           .hamburgerBottom {
@@ -309,4 +347,4 @@ function PortalLayout({ children }) {
   );
 }
 
-export default PortalLayout;
+export default AdminLayout;

@@ -1,16 +1,16 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 
-import { useStudentContext } from "../lib/dataStore/contexts/student";
-import { useStudentActions } from "../lib/dataStore/actions/student";
+import { useUserContext } from "../lib/dataStore/contexts/user";
+import { useUserActions } from "../lib/dataStore/actions/user";
 
 import SocialBtns from "./SocialBtns";
 
 import { FaMapMarkerAlt, FaPhoneAlt, FaEnvelope } from "react-icons/fa";
 
 function Contact() {
-  const { state } = useStudentContext();
-  const { contactUs } = useStudentActions();
+  const { state } = useUserContext();
+  const { contactUs } = useUserActions();
   const { loading } = state;
   const {
     register,
